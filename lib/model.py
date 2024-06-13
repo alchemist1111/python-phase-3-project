@@ -30,4 +30,7 @@ class BorrowedBook(Base):
     book_id = Column(Integer, ForeignKey('books.id'), primary_key=True)
     borrower_id = Column(Integer, ForeignKey('borrowers.id'), primary_key=True)
     book = relationship('Book', backref='borrowed_books')
-    borrower = relationship('Borrower', back_populates='borrowed_books')          
+    borrower = relationship('Borrower', back_populates='borrowed_books')  
+
+# Create the tables in the database
+Base.metadata.create_all(engine)            
