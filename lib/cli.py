@@ -12,4 +12,10 @@ def get_books():
 def get_authors():
     result = session.query(Author).all()
     for author in result:
-        print(f"Name: {author.name}")        
+        print(f"Name: {author.name}")  
+
+# Function to get all borrowers
+def get_borrowers():
+    result = session.query(Borrower).all()
+    for borrower in result:
+        print(f"Name: {borrower.name}")              
