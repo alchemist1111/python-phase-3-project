@@ -42,4 +42,23 @@ def return_book(book_id):
         session.commit()
         print(f"Book {book.title} returned")
     else:
-        print("Invalid book")                            
+        print("Invalid book")  
+
+# Main function to parse command-line arguments and execute actions
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--action', choices=['get_books', 'get_authors', 'get_borrowers', 'borrow_book', 'return_book'])
+    parser.add_argument('--book_id', type=int)
+    parser.add_argument('--borrower_id', type=int)
+    args = parser.parse_args()
+
+    if args.action == 'get_books':
+        get_books()
+    elif args.action == 'get_authors':
+        get_authors()
+    elif args.action == 'get_borrowers':
+        get_borrowers()
+    elif args.action == 'borrow_book':
+        borrow_book(args.book_id, args.borrower_id)
+    elif args.action == 'return_book':
+        return_book(args.book_id)                                  
