@@ -1,6 +1,6 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, sessionmaker, declarative_base
 
 
 # Define the base class for the ORM models
@@ -32,7 +32,9 @@ class BorrowedBook(Base):
     book = relationship('Book', backref='borrowed_books')
     borrower = relationship('Borrower', back_populates='borrowed_books')  
 
-# Create the tables in the database
+# Create the engine
+engine = create_engine('sqlite:///library.db')
 
-    Base.metadata.create_all(engine)
+# Create the tables in the database
+Base.metadata.create_all(engine)
            
