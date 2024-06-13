@@ -23,4 +23,11 @@ class Borrower(Base):
     __tablename__ = 'borrowers'
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    borrowed_books = relationship('BorrowedBook', back_populates='borrower')       
+    borrowed_books = relationship('BorrowedBook', back_populates='borrower') 
+
+class BorrowedBook(Base):
+    __tablename__ = 'borrowed_books'
+    book_id = Column(Integer, ForeignKey('books.id'), primary_key=True)
+    borrower_id = Column(Integer, ForeignKey('borrowers.id'), primary_key=True)
+    book = relationship('Book', backref='borrowed_books')
+    borrower = relationship('Borrower', back_populates='borrowed_books')          
