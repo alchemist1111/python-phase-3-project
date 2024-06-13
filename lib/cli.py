@@ -30,4 +30,16 @@ def borrow_book(book_id, borrower_id):
         session.commit()
         print(f"Book {book.title} borrowed by {borrower.name}")
     else:
-        print("Invalid book or borrower")                     
+        print("Invalid book or borrower") 
+
+# Function to return a book
+def return_book(book_id):
+    book = session.query(Book).get(book_id)
+    if book:
+        borrowed_books = session.query(BorrowedBook).filter_by(book_id=book.id).all()
+        for borrowed_book in borrowed_books:
+            session.delete(borrowed_book)
+        session.commit()
+        print(f"Book {book.title} returned")
+    else:
+        print("Invalid book")                            
