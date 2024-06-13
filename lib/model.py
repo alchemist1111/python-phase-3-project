@@ -33,4 +33,6 @@ class BorrowedBook(Base):
     borrower = relationship('Borrower', back_populates='borrowed_books')  
 
 # Create the tables in the database
-Base.metadata.create_all(engine)            
+
+    Base.metadata.create_all(engine)
+           

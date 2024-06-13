@@ -1,1 +1,2 @@
-DATABASE_URI = 'sqlite:///library.db'
+
+DATABASE_URL = 'sqlite://lib/library.db'

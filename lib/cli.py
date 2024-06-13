@@ -1,5 +1,5 @@
 import argparse
-from Database import session  # Import the session created in Database.py
+from database import session  # Import the session created in database.py
 from model import Book, Author, Borrower, BorrowedBook  # Import the models
 
 # Function to get all books
