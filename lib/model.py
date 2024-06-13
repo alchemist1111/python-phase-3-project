@@ -12,3 +12,9 @@ class Book(Base):
     title = Column(String)
     author_id = Column(Integer, ForeignKey('authors.id'))
     author = relationship('Author', backref='books')
+
+
+class Author(Base):
+    __tablename__ = 'authors'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)    
