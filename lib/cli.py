@@ -18,4 +18,16 @@ def get_authors():
 def get_borrowers():
     result = session.query(Borrower).all()
     for borrower in result:
-        print(f"Name: {borrower.name}")              
+        print(f"Name: {borrower.name}") 
+
+# Function to borrow a book
+def borrow_book(book_id, borrower_id):
+    book = session.query(Book).get(book_id)
+    borrower = session.query(Borrower).get(borrower_id)
+    if book and borrower:
+        borrowed_book = BorrowedBook(book=book, borrower=borrower)
+        session.add(borrowed_book)
+        session.commit()
+        print(f"Book {book.title} borrowed by {borrower.name}")
+    else:
+        print("Invalid book or borrower")                     
