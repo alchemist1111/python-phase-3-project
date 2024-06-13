@@ -17,4 +17,10 @@ class Book(Base):
 class Author(Base):
     __tablename__ = 'authors'
     id = Column(Integer, primary_key=True)
-    name = Column(String)    
+    name = Column(String) 
+
+class Borrower(Base):
+    __tablename__ = 'borrowers'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    borrowed_books = relationship('BorrowedBook', back_populates='borrower')       
