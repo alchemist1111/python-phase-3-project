@@ -7,3 +7,9 @@ def get_books():
     result = session.query(Book).all()
     for book in result:
         print(f"Title: {book.title}, Author: {book.author.name}")
+
+# Function to get all authors
+def get_authors():
+    result = session.query(Author).all()
+    for author in result:
+        print(f"Name: {author.name}")        
